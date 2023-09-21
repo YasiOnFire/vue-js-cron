@@ -86,3 +86,39 @@ test('test render pt', () => {
     }
   })).toBe('1-2')
 })
+
+test('test getLocaleStr pl', () => {
+  const l = getLocale('pl', {
+    custom: {
+      '*': 'bar',
+      message: 'baz'
+    }
+  })
+
+  expect(l.getLocaleStr('year', 'minute', 'empty', 'text')).toBe('cada minuto')
+  expect(l.getLocaleStr('year', 'dayOfWeek', 'value', 'prefix')).toBe('e de')
+  expect(l.getLocaleStr('year', 'minute', 'range', 'prefix')).toBe(':')
+  expect(l.getLocaleStr('custom', 'foo')).toBe('bar')
+  expect(l.getLocaleStr('custom', 'message')).toBe('baz')
+})
+
+test('test render pl', () => {
+  const l = getLocale('pl', {
+    '*': {
+      '*': {
+        '*': {
+          '*': '{{start.text}}-{{end.text}}'
+        }
+      }
+    }
+  })
+
+  expect(l.render('period', 'field', 'type', 'pos', {
+    start: {
+      text: '1'
+    },
+    end: {
+      text: '2'
+    }
+  })).toBe('1-2')
+})

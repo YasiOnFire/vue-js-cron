@@ -5,6 +5,7 @@ import da from './da'
 import de from './de'
 import en from './en'
 import es from './es'
+import pl from './pl'
 import pt from './pt'
 const { genItems, pad, traverse } = util
 
@@ -12,6 +13,7 @@ const locales = {
   en,
   de,
   pt,
+  pl,
   es,
   da,
   zh: cn,
@@ -73,7 +75,7 @@ function defaultItems (locale) {
 }
 
 export {
-  defaultItems,
-  getLocale,
-  Locale
+  Locale, defaultItems,
+  getLocale
 }
+
